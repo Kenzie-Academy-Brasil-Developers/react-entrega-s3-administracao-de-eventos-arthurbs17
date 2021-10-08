@@ -1,5 +1,17 @@
+import { useContext } from "react";
+import { WeddingContext } from "../../providers/Wedding/wedding";
+
 const WeddingList = () => {
-  return <div>Wedding</div>;
+  const { weddingBag } = useContext(WeddingContext);
+  return (
+    <div>
+      <ul>
+        {weddingBag.map((product) => (
+          <li key={product.id}>{product.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default WeddingList;
