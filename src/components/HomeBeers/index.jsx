@@ -1,30 +1,30 @@
 import { useContext, useState } from "react";
-import { useHistory } from "react-router";
+
 import { HomeBeersContext } from "../../providers/HomeBeers/homeBeers";
 import { ButtonAdd } from "../Button/buttons";
-import { Card } from "./styles";
+import { Card, Container, Content } from "./styles";
 
 const HomeBeers = () => {
   const { products } = useContext(HomeBeersContext);
   const [event, setEvent] = useState("");
-  const history = useHistory();
 
   const handleChange = (e) => {
     setEvent(e.target.value);
   };
 
   return (
-    <div>
-      <button onClick={() => history.push("/confraternization")}>confra</button>
-      <button onClick={() => history.push("/graduation")}>formatura</button>
-      <button onClick={() => history.push("/wedding")}>casamento</button>
-      <ul>
+    <Container>
+      <h2>Bebidas</h2>
+      <Content>
         {products.map((product) => (
           <Card key={product.id}>
             <img src={product.image_url} alt={product.name} />
             <h3>{product.name}</h3>
             <span> Fabricação: {product.first_brewed}</span>
-            <span>{product.description}</span>
+            <details>
+              <summary>Descrição da bebida</summary>
+              <span>{product.description}</span>
+            </details>
             <label>
               Escolha o evento:
               <select value={event} onChange={handleChange}>
@@ -39,8 +39,8 @@ const HomeBeers = () => {
             </ButtonAdd>{" "}
           </Card>
         ))}
-      </ul>
-    </div>
+      </Content>
+    </Container>
   );
 };
 

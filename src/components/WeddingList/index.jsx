@@ -1,22 +1,25 @@
 import { useContext } from "react";
 import { WeddingContext } from "../../providers/Wedding/wedding";
+import { CardBag, ContainerBag, ContentBag } from "../../styles/cardInBag";
 import { ButtonRemove } from "../Button/buttons";
 
 const WeddingList = () => {
   const { weddingBag, removeFromWeddingBag } = useContext(WeddingContext);
   return (
-    <div>
-      <ul>
+    <ContainerBag>
+      <h2>Bebidas casamento</h2>
+      <ContentBag>
         {weddingBag.map((product) => (
-          <li key={product.id}>
-            {product.name}
+          <CardBag key={product.id}>
+            <img src={product.image_url} alt={product.name} />
+            <h3>{product.name}</h3>
             <ButtonRemove removeBag={removeFromWeddingBag} item={product}>
               Retirar
             </ButtonRemove>
-          </li>
+          </CardBag>
         ))}
-      </ul>
-    </div>
+      </ContentBag>
+    </ContainerBag>
   );
 };
 

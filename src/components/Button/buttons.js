@@ -1,9 +1,9 @@
-const { useContext } = require("react");
-const { GraduationContext } = require("../../providers/ Graduation/graduation");
-const {
-  ConfraternizationContext,
-} = require("../../providers/Confraternization/confraternization");
-const { WeddingContext } = require("../../providers/Wedding/wedding");
+import { AddButton, RemoveButton } from "./styles";
+
+import { useContext } from "react";
+import { GraduationContext } from "../../providers/ Graduation/graduation";
+import { ConfraternizationContext } from "../../providers/Confraternization/confraternization";
+import { WeddingContext } from "../../providers/Wedding/wedding";
 
 export const ButtonAdd = ({ type, item, children }) => {
   const { addToWeddingBag } = useContext(WeddingContext);
@@ -23,7 +23,7 @@ export const ButtonAdd = ({ type, item, children }) => {
     }
   };
 
-  return <button onClick={handleClick}>{children}</button>;
+  return <AddButton onClick={handleClick}>{children}</AddButton>;
 };
 
 export const ButtonRemove = ({ removeBag, item, children }) => {
@@ -31,5 +31,5 @@ export const ButtonRemove = ({ removeBag, item, children }) => {
     removeBag(item);
   };
 
-  return <button onClick={handleClick}>{children}</button>;
+  return <RemoveButton onClick={handleClick}>{children}</RemoveButton>;
 };

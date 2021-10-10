@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const ContainerBag = styled.div`
   text-align: center;
   padding: 10px;
 `;
 
-export const Content = styled.ul`
+export const ContentBag = styled.ul`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -14,9 +14,9 @@ export const Content = styled.ul`
   margin: 0 auto;
 `;
 
-export const Card = styled.li`
-  max-width: 200px;
-  min-height: 300px;
+export const CardBag = styled.li`
+  width: 150px;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -33,12 +33,5 @@ export const Card = styled.li`
     width: 70px;
     height: 120px;
     margin-bottom: 10px;
-  }
-  span {
-    margin-bottom: 5px;
-    font-size: 14px;
-  }
-  details span {
-    font-size: 10px;
   }
 `;
