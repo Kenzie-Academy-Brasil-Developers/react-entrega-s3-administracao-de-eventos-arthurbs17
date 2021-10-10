@@ -1,13 +1,20 @@
 import { useContext } from "react";
 import { GraduationContext } from "../../providers/ Graduation/graduation";
+import { ButtonRemove } from "../Button/buttons";
 
 const GraduationList = () => {
-  const { graduationBag } = useContext(GraduationContext);
+  const { graduationBag, removeFromGraduationBag } =
+    useContext(GraduationContext);
   return (
     <div>
       <ul>
         {graduationBag.map((product) => (
-          <li key={product.id}>{product.name}</li>
+          <li key={product.id}>
+            {product.name}
+            <ButtonRemove removeBag={removeFromGraduationBag} item={product}>
+              Retirar
+            </ButtonRemove>
+          </li>
         ))}
       </ul>
     </div>

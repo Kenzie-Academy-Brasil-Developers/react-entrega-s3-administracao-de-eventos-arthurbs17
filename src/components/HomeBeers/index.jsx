@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
 import { useHistory } from "react-router";
 import { HomeBeersContext } from "../../providers/HomeBeers/homeBeers";
-import ButtonAdd from "../Button";
+import { ButtonAdd } from "../Button/buttons";
+import { Card } from "./styles";
 
 const HomeBeers = () => {
   const { products } = useContext(HomeBeersContext);
@@ -19,8 +20,11 @@ const HomeBeers = () => {
       <button onClick={() => history.push("/wedding")}>casamento</button>
       <ul>
         {products.map((product) => (
-          <li key={product.id}>
-            {product.name}
+          <Card key={product.id}>
+            <img src={product.image_url} alt={product.name} />
+            <h3>{product.name}</h3>
+            <span> Fabricação: {product.first_brewed}</span>
+            <span>{product.description}</span>
             <label>
               Escolha o evento:
               <select value={event} onChange={handleChange}>
@@ -33,7 +37,7 @@ const HomeBeers = () => {
             <ButtonAdd type={event} item={product}>
               Adicionar
             </ButtonAdd>{" "}
-          </li>
+          </Card>
         ))}
       </ul>
     </div>

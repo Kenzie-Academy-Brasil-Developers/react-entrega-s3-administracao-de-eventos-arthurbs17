@@ -5,7 +5,7 @@ const {
 } = require("../../providers/Confraternization/confraternization");
 const { WeddingContext } = require("../../providers/Wedding/wedding");
 
-const ButtonAdd = ({ type, item, children }) => {
+export const ButtonAdd = ({ type, item, children }) => {
   const { addToWeddingBag } = useContext(WeddingContext);
   const { addToGraduationBag } = useContext(GraduationContext);
   const { addToConfraBag } = useContext(ConfraternizationContext);
@@ -26,4 +26,10 @@ const ButtonAdd = ({ type, item, children }) => {
   return <button onClick={handleClick}>{children}</button>;
 };
 
-export default ButtonAdd;
+export const ButtonRemove = ({ removeBag, item, children }) => {
+  const handleClick = () => {
+    removeBag(item);
+  };
+
+  return <button onClick={handleClick}>{children}</button>;
+};
